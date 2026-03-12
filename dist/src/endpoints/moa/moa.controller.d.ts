@@ -1,0 +1,35 @@
+import { MoaEconomics } from './entities/moa.economics';
+import { MoaToken } from './entities/moa.token';
+import { MoaPair } from "./entities/moa.pair";
+import { MoaSettings } from "./entities/moa.settings";
+import { MoaEconomicsService } from "./moa.economics.service";
+import { MoaPairService } from "./moa.pair.service";
+import { MoaSettingsService } from "./moa.settings.service";
+import { MoaTokenService } from "./moa.token.service";
+import { MoaFarmService } from './moa.farm.service';
+import { MoaFarm } from './entities/moa.farm';
+import { MoaPairExchange } from './entities/moa.pair.exchange';
+import { MoaTokenChartsService } from './moa.token.charts.service';
+import { MoaTokenChart } from './entities/moa.token.chart';
+export declare class MoaController {
+    private readonly moaEconomicsService;
+    private readonly moaSettingsService;
+    private readonly moaPairsService;
+    private readonly moaTokensService;
+    private readonly moaFarmsService;
+    private readonly moaTokenChartsService;
+    constructor(moaEconomicsService: MoaEconomicsService, moaSettingsService: MoaSettingsService, moaPairsService: MoaPairService, moaTokensService: MoaTokenService, moaFarmsService: MoaFarmService, moaTokenChartsService: MoaTokenChartsService);
+    getMoaSettings(): Promise<MoaSettings>;
+    getMoaEconomics(): Promise<MoaEconomics>;
+    getMoaPairs(from: number, size: number, exchange?: MoaPairExchange, includeFarms?: boolean): Promise<MoaPair[]>;
+    getMoaPairsTemp(from: number, size: number, exchange?: MoaPairExchange): Promise<MoaPair[]>;
+    getMoaPairsCount(exchange?: MoaPairExchange, includeFarms?: boolean): Promise<number>;
+    getMoaTokens(from: number, size: number): Promise<MoaToken[]>;
+    getMoaTokensCount(): Promise<number>;
+    getMoaTokenIdentifier(identifier: string): Promise<MoaToken>;
+    getMoaFarms(from: number, size: number): Promise<MoaFarm[]>;
+    getMoaFarmsCount(): Promise<number>;
+    getMoaPair(baseId: string, quoteId: string, includeFarms?: boolean): Promise<MoaPair>;
+    getTokenPricesHourResolution(identifier: string): Promise<MoaTokenChart[] | undefined>;
+    getTokenPricesDayResolution(identifier: string): Promise<MoaTokenChart[] | undefined>;
+}

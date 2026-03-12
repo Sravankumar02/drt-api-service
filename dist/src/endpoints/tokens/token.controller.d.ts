@@ -1,0 +1,37 @@
+import { SortOrder } from "src/common/entities/sort.order";
+import { TransactionStatus } from "../transactions/entities/transaction.status";
+import { TransactionService } from "../transactions/transaction.service";
+import { TokenAccount } from "./entities/token.account";
+import { TokenDetailed } from "./entities/token.detailed";
+import { TokenService } from "./token.service";
+import { TokenRoles } from "./entities/token.roles";
+import { Transaction } from "../transactions/entities/transaction";
+import { TokenSupplyResult } from "./entities/token.supply.result";
+import { TokenSort } from "./entities/token.sort";
+import { TransferService } from "../transfers/transfer.service";
+import { Response } from "express";
+import { TokenType } from "src/common/indexer/entities";
+import { MoaPairType } from "../moa/entities/moa.pair.type";
+import { TokenAssetsPriceSourceType } from "src/common/assets/entities/token.assets.price.source.type";
+export declare class TokenController {
+    private readonly tokenService;
+    private readonly transactionService;
+    private readonly transferService;
+    constructor(tokenService: TokenService, transactionService: TransactionService, transferService: TransferService);
+    getTokens(from: number, size: number, type?: TokenType, search?: string, name?: string, identifier?: string, identifiers?: string[], sort?: TokenSort, order?: SortOrder, includeMetaDCDT?: boolean, moaPairType?: MoaPairType[], priceSource?: TokenAssetsPriceSourceType): Promise<TokenDetailed[]>;
+    getTokenCount(search?: string, name?: string, type?: TokenType, identifier?: string, identifiers?: string[], includeMetaDCDT?: boolean, moaPairType?: MoaPairType[], priceSource?: TokenAssetsPriceSourceType): Promise<number>;
+    getTokenCountAlternative(search?: string, name?: string, type?: TokenType, identifier?: string, identifiers?: string[], includeMetaDCDT?: boolean, moaPairType?: MoaPairType[], priceSource?: TokenAssetsPriceSourceType): Promise<number>;
+    getToken(identifier: string, denominated?: boolean): Promise<TokenDetailed>;
+    getTokenSupply(identifier: string, denominated?: boolean): Promise<TokenSupplyResult>;
+    getTokenAccounts(identifier: string, from: number, size: number): Promise<TokenAccount[]>;
+    getTokenAccountsCount(identifier: string): Promise<number>;
+    getTokenTransactions(identifier: string, from: number, size: number, sender?: string, receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, functions?: string[], before?: number, after?: number, round?: number, order?: SortOrder, fields?: string[], isScCall?: boolean, withScResults?: boolean, withOperations?: boolean, withLogs?: boolean, withScamInfo?: boolean, withUsername?: boolean, withBlockInfo?: boolean, withActionTransferValue?: boolean, withRelayedScresults?: boolean): Promise<Transaction[]>;
+    getTokenTransactionsCount(identifier: string, sender?: string, receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, before?: number, after?: number, round?: number, withRelayedScresults?: boolean, isScCall?: boolean): Promise<number>;
+    getTokenRoles(identifier: string): Promise<TokenRoles[]>;
+    getTokenRolesForAddress(identifier: string, address: string): Promise<TokenRoles>;
+    getTokenTransfers(identifier: string, from: number, size: number, sender?: string[], receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, functions?: string[], before?: number, after?: number, round?: number, fields?: string[], order?: SortOrder, isScCall?: boolean, withScamInfo?: boolean, withUsername?: boolean, withBlockInfo?: boolean, withActionTransferValue?: boolean): Promise<Transaction[]>;
+    getTokenTransfersCount(identifier: string, sender?: string[], receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, functions?: string[], before?: number, after?: number, round?: number, isScCall?: boolean): Promise<number>;
+    getAccountTransfersCountAlternative(identifier: string, sender?: string[], receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, functions?: string[], before?: number, after?: number, round?: number, isScCall?: boolean): Promise<number>;
+    getTokenLogoPng(identifier: string, response: Response): Promise<void>;
+    getTokenLogoSvg(identifier: string, response: Response): Promise<void>;
+}

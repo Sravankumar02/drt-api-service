@@ -1,0 +1,1 @@
+{"version":3,"file":"miniblock.module.js","sourceRoot":"","sources":["../../../../src/endpoints/miniblocks/miniblock.module.ts"],"names":[],"mappings":";;;;AAAA,2CAAwC;AACxC,6DAAwD;AAUjD,IAAM,eAAe,GAArB,MAAM,eAAe;CAAI,CAAA;AAAnB,eAAe;IAR3B,IAAA,eAAM,EAAC;QACN,SAAS,EAAE;YACT,qCAAgB;SACjB;QACD,OAAO,EAAE;YACP,qCAAgB;SACjB;KACF,CAAC;GACW,eAAe,CAAI;AAAnB,0CAAe"}

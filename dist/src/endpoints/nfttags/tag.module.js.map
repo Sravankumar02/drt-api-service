@@ -1,0 +1,1 @@
+{"version":3,"file":"tag.module.js","sourceRoot":"","sources":["../../../../src/endpoints/nfttags/tag.module.ts"],"names":[],"mappings":";;;;AAAA,2CAAwC;AACxC,+CAA2C;AAUpC,IAAM,SAAS,GAAf,MAAM,SAAS;CAAI,CAAA;AAAb,SAAS;IARrB,IAAA,eAAM,EAAC;QACN,SAAS,EAAE;YACT,wBAAU;SACX;QACD,OAAO,EAAE;YACP,wBAAU;SACX;KACF,CAAC;GACW,SAAS,CAAI;AAAb,8BAAS"}

@@ -1,0 +1,30 @@
+import { CacheService, RedisCacheService } from "@sravankumar02/sdk-nestjs-cache";
+import { SchedulerRegistry } from "@nestjs/schedule";
+import { ApiConfigService } from "src/common/api-config/api.config.service";
+import { GatewayService } from "src/common/gateway/gateway.service";
+import { ProtocolService } from "src/common/protocol/protocol.service";
+import { TpsService } from "src/endpoints/tps/tps.service";
+import { BlockService } from "src/endpoints/blocks/block.service";
+import { TransferService } from "src/endpoints/transfers/transfer.service";
+export declare class TpsWarmerService {
+    private readonly cachingService;
+    private readonly redisCacheService;
+    private readonly protocolService;
+    private readonly apiConfigService;
+    private readonly gatewayService;
+    private readonly schedulerRegistry;
+    private readonly tpsService;
+    private readonly blockService;
+    private readonly transferService;
+    private readonly logger;
+    constructor(cachingService: CacheService, redisCacheService: RedisCacheService, protocolService: ProtocolService, apiConfigService: ApiConfigService, gatewayService: GatewayService, schedulerRegistry: SchedulerRegistry, tpsService: TpsService, blockService: BlockService, transferService: TransferService);
+    handleBlockProcessor(): Promise<void>;
+    refreshTpsHistory(): Promise<void>;
+    private incrementTotalTransactions;
+    private getMaxTps;
+    private processTpsForShard;
+    private getStartNonce;
+    private getEndNonce;
+    private processTpsForShardAndNonce;
+    private saveTps;
+}

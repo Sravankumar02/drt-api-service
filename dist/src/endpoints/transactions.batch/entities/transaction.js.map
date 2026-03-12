@@ -1,0 +1,1 @@
+{"version":3,"file":"transaction.js","sourceRoot":"","sources":["../../../../../src/endpoints/transactions.batch/entities/transaction.ts"],"names":[],"mappings":";;;AAAA,+DAA2D;AAE3D,MAAa,WAAW;IAAxB;QACE,OAAE,GAAuB,IAAI,wCAAkB,EAAE,CAAC;QAClD,SAAI,GAAW,EAAE,CAAC;QAClB,SAAI,GAAW,EAAE,CAAC;IACpB,CAAC;CAAA;AAJD,kCAIC"}

@@ -1,0 +1,38 @@
+import { AbstractQuery, ElasticQuery } from "@sravankumar02/sdk-nestjs-elastic";
+import { ApiConfigService } from "src/common/api-config/api.config.service";
+import { QueryPagination } from "src/common/entities/query.pagination";
+import { BlockFilter } from "src/endpoints/blocks/entities/block.filter";
+import { BlsService } from "src/endpoints/bls/bls.service";
+import { CollectionFilter } from "src/endpoints/collections/entities/collection.filter";
+import { NftFilter } from "src/endpoints/nfts/entities/nft.filter";
+import { RoundFilter } from "src/endpoints/rounds/entities/round.filter";
+import { TokenWithRolesFilter } from "src/endpoints/tokens/entities/token.with.roles.filter";
+import { TransactionFilter } from "src/endpoints/transactions/entities/transaction.filter";
+import { AccountQueryOptions } from "src/endpoints/accounts/entities/account.query.options";
+import { AccountHistoryFilter } from "src/endpoints/accounts/entities/account.history.filter";
+import { SmartContractResultFilter } from "src/endpoints/sc-results/entities/smart.contract.result.filter";
+import { ApplicationFilter } from "src/endpoints/applications/entities/application.filter";
+import { EventsFilter } from "src/endpoints/events/entities/events.filter";
+export declare class ElasticIndexerHelper {
+    private readonly apiConfigService;
+    private readonly blsService;
+    private nonFungibleDcdtTypes;
+    private semiFungibleDcdtTypes;
+    private metaDcdtTypes;
+    constructor(apiConfigService: ApiConfigService, blsService: BlsService);
+    buildElasticBlocksFilter(filter: BlockFilter): Promise<AbstractQuery[]>;
+    buildCollectionRolesFilter(filter: CollectionFilter, address?: string): ElasticQuery;
+    private getRoleCondition;
+    buildElasticNftFilter(filter: NftFilter, identifier?: string, address?: string): ElasticQuery;
+    buildTransferFilterQuery(filter: TransactionFilter): ElasticQuery;
+    buildTokensWithRolesForAddressQuery(address: string, filter: TokenWithRolesFilter, pagination?: QueryPagination): ElasticQuery;
+    buildElasticRoundsFilter(filter: RoundFilter): Promise<AbstractQuery[]>;
+    buildSmartContractResultFilterQuery(address?: string): ElasticQuery;
+    buildTransactionFilterQuery(filter: TransactionFilter, address?: string): ElasticQuery;
+    buildAccountHistoryFilterQuery(address?: string, token?: string, filter?: AccountHistoryFilter): ElasticQuery;
+    buildAccountFilterQuery(filter: AccountQueryOptions): ElasticQuery;
+    buildResultsFilterQuery(filter: SmartContractResultFilter): ElasticQuery;
+    buildApplicationFilter(filter: ApplicationFilter): ElasticQuery;
+    applyFunctionFilter(elasticQuery: ElasticQuery, functions: string[]): ElasticQuery;
+    buildEventsFilter(filter: EventsFilter): ElasticQuery;
+}

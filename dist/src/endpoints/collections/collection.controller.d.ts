@@ -1,0 +1,38 @@
+import { NftCollection } from "./entities/nft.collection";
+import { NftType } from "../nfts/entities/nft.type";
+import { CollectionService } from "./collection.service";
+import { Nft } from "../nfts/entities/nft";
+import { NftService } from "../nfts/nft.service";
+import { CollectionAccount } from "./entities/collection.account";
+import { Transaction } from "../transactions/entities/transaction";
+import { TransactionStatus } from "../transactions/entities/transaction.status";
+import { SortOrder } from "src/common/entities/sort.order";
+import { TransactionService } from "../transactions/transaction.service";
+import { NftRank } from "src/common/assets/entities/nft.rank";
+import { SortCollectionNfts } from "./entities/sort.collection.nfts";
+import { NftCollectionDetailed } from "./entities/nft.collection.detailed";
+import { Response } from "express";
+import { SortCollections } from "./entities/sort.collections";
+import { TransferService } from "../transfers/transfer.service";
+import { NftSubType } from "../nfts/entities/nft.sub.type";
+export declare class CollectionController {
+    private readonly collectionService;
+    private readonly nftService;
+    private readonly transactionService;
+    private readonly transferService;
+    constructor(collectionService: CollectionService, nftService: NftService, transactionService: TransactionService, transferService: TransferService);
+    getNftCollections(from: number, size: number, search?: string, identifiers?: string[], type?: NftType[], subType?: NftSubType[], creator?: string, before?: number, after?: number, canCreate?: string, canBurn?: string, canAddQuantity?: string, canUpdateAttributes?: string, canAddUri?: string, canTransferRole?: string, excludeMetaDCDT?: boolean, sort?: SortCollections, order?: SortOrder): Promise<NftCollection[]>;
+    getCollectionCount(search?: string, type?: NftType[], subType?: NftSubType[], creator?: string, before?: number, after?: number, canCreate?: string, canBurn?: string, canAddQuantity?: string, canUpdateAttributes?: string, canAddUri?: string, canTransferRole?: string, excludeMetaDCDT?: boolean): Promise<number>;
+    getCollectionCountAlternative(search?: string, type?: NftType[], creator?: string, before?: number, after?: number, canCreate?: string, canBurn?: string, canAddQuantity?: string, canUpdateAttributes?: string, canAddUri?: string, canTransferRole?: string, excludeMetaDCDT?: boolean): Promise<number>;
+    getNftCollection(collection: string): Promise<NftCollectionDetailed>;
+    getNftCollectionRanks(collection: string): Promise<NftRank[]>;
+    getNfts(collection: string, from: number, size: number, search?: string, identifiers?: string[], name?: string, tags?: string[], creator?: string, isWhitelistedStorage?: boolean, hasUris?: boolean, isNsfw?: boolean, traits?: Record<string, string>, nonceBefore?: number, nonceAfter?: number, withOwner?: boolean, withSupply?: boolean, withAssets?: boolean, sort?: SortCollectionNfts, order?: SortOrder): Promise<Nft[]>;
+    getNftCount(collection: string, search?: string, identifiers?: string[], name?: string, tags?: string[], creator?: string, isWhitelistedStorage?: boolean, hasUris?: boolean, traits?: Record<string, string>, nonceBefore?: number, nonceAfter?: number): Promise<number>;
+    getNftAccounts(identifier: string, from: number, size: number): Promise<CollectionAccount[]>;
+    getCollectionTransactions(identifier: string, from: number, size: number, sender?: string, receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, functions?: string[], before?: number, after?: number, round?: number, order?: SortOrder, withScResults?: boolean, withOperations?: boolean, withLogs?: boolean, withScamInfo?: boolean, withUsername?: boolean, withRelayedScresults?: boolean): Promise<Transaction[]>;
+    getCollectionTransactionsCount(identifier: string, sender?: string, receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, before?: number, after?: number, round?: number, withRelayedScresults?: boolean): Promise<number>;
+    getCollectionTransfers(identifier: string, from: number, size: number, sender?: string, receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, functions?: string[], before?: number, after?: number, round?: number, order?: SortOrder, withScResults?: boolean, withOperations?: boolean, withLogs?: boolean, withScamInfo?: boolean, withUsername?: boolean): Promise<Transaction[]>;
+    getCollectionTransfersCount(identifier: string, functions?: string[], sender?: string, receiver?: string[], senderShard?: number, receiverShard?: number, miniBlockHash?: string, hashes?: string[], status?: TransactionStatus, before?: number, after?: number, round?: number): Promise<number>;
+    getCollectionLogoPng(identifier: string, response: Response): Promise<void>;
+    getTokenLogoSvg(identifier: string, response: Response): Promise<void>;
+}

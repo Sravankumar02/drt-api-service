@@ -1,0 +1,30 @@
+import { GatewayService } from "src/common/gateway/gateway.service";
+import { SmartContractResult } from "../sc-results/entities/smart.contract.result";
+import { Transaction } from "./entities/transaction";
+import { TransactionDetailed } from "./entities/transaction.detailed";
+import { TransactionLog } from "./entities/transaction.log";
+import { TokenTransferService } from "../tokens/token.transfer.service";
+import { IndexerService } from "src/common/indexer/indexer.service";
+import { ApiConfigService } from "../../common/api-config/api.config.service";
+export declare class TransactionGetService {
+    private readonly indexerService;
+    private readonly gatewayService;
+    private readonly tokenTransferService;
+    private readonly apiConfigService;
+    private readonly logger;
+    constructor(indexerService: IndexerService, gatewayService: GatewayService, tokenTransferService: TokenTransferService, apiConfigService: ApiConfigService);
+    private tryGetTransactionFromElasticBySenderAndNonce;
+    getTransactionLogsFromElastic(hashes: string[]): Promise<TransactionLog[]>;
+    private getTransactionLogsFromElasticInternal;
+    private getTransactionLogsFromElasticInternalLogsIndex;
+    private getTransactionLogsFromElasticInternalEventsIndex;
+    getTransactionScResultsFromElastic(txHash: string): Promise<SmartContractResult[]>;
+    tryGetTransactionFromElastic(txHash: string, fields?: string[]): Promise<TransactionDetailed | null>;
+    private alterDuplicatedTransferValueOnlyEvents;
+    private removeDuplicatedDCDTTransferEvents;
+    private getEventContentHash;
+    private applyUsernamesToDetailedTransaction;
+    tryGetTransactionFromGatewayForList(txHash: string): Promise<Transaction | undefined>;
+    tryGetTransactionFromGateway(txHash: string, queryInElastic?: boolean): Promise<TransactionDetailed | null>;
+    applyNftNameOnTransactionOperations(transactions: TransactionDetailed[]): Promise<void>;
+}

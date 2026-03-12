@@ -1,0 +1,1 @@
+{"version":3,"file":"queue.worker.module.js","sourceRoot":"","sources":["../../../src/queue.worker/queue.worker.module.ts"],"names":[],"mappings":";;;;AAAA,2CAAwC;AACxC,0EAAqE;AAS9D,IAAM,iBAAiB,GAAvB,MAAM,iBAAiB;CAAI,CAAA;AAArB,iBAAiB;IAP7B,IAAA,eAAM,EAAC;QACN,OAAO,EAAE;YACP,iCAAc;SACf;QACD,WAAW,EAAE,EAAE;QACf,SAAS,EAAE,EAAE;KACd,CAAC;GACW,iBAAiB,CAAI;AAArB,8CAAiB"}

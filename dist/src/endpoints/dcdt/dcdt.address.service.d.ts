@@ -1,0 +1,48 @@
+import { ApiConfigService } from "src/common/api-config/api.config.service";
+import { QueryPagination } from "src/common/entities/query.pagination";
+import { GatewayService } from "src/common/gateway/gateway.service";
+import { ProtocolService } from "src/common/protocol/protocol.service";
+import { DcdtDataSource } from "./entities/dcdt.data.source";
+import { DcdtService } from "./dcdt.service";
+import { NftAccount } from "../nfts/entities/nft.account";
+import { NftFilter } from "../nfts/entities/nft.filter";
+import { NftExtendedAttributesService } from "../nfts/nft.extendedattributes.service";
+import { NftCollectionWithRoles } from "../collections/entities/nft.collection.with.roles";
+import { CollectionService } from "../collections/collection.service";
+import { CollectionFilter } from "../collections/entities/collection.filter";
+import { MetricsService } from "@sravankumar02/sdk-nestjs-monitoring";
+import { CacheService } from "@sravankumar02/sdk-nestjs-cache";
+import { IndexerService } from "src/common/indexer/indexer.service";
+import { AssetsService } from "src/common/assets/assets.service";
+import { NftQueryOptions } from "../nfts/entities/nft.query.options";
+export declare class DcdtAddressService {
+    private readonly apiConfigService;
+    private readonly dcdtService;
+    private readonly indexerService;
+    private readonly gatewayService;
+    private readonly cachingService;
+    private readonly metricsService;
+    private readonly protocolService;
+    private readonly nftExtendedAttributesService;
+    private readonly collectionService;
+    private readonly assetsService;
+    private readonly logger;
+    private readonly NFT_THUMBNAIL_PREFIX;
+    constructor(apiConfigService: ApiConfigService, dcdtService: DcdtService, indexerService: IndexerService, gatewayService: GatewayService, cachingService: CacheService, metricsService: MetricsService, protocolService: ProtocolService, nftExtendedAttributesService: NftExtendedAttributesService, collectionService: CollectionService, assetsService: AssetsService);
+    getNftsForAddress(address: string, filter: NftFilter, pagination: QueryPagination, source?: DcdtDataSource, options?: NftQueryOptions): Promise<NftAccount[]>;
+    getNftCountForAddressFromElastic(address: string, filter: NftFilter): Promise<number>;
+    getCollectionCountForAddressFromElastic(address: string, filter: CollectionFilter): Promise<number>;
+    private getNftsForAddressFromElastic;
+    getCollectionsForAddress(address: string, filter: CollectionFilter, pagination: QueryPagination): Promise<NftCollectionWithRoles[]>;
+    private applyRolesToAccountCollections;
+    private getNftsForAddressFromGatewayWithElasticFallback;
+    private getNftsForAddressFromGateway;
+    private mapToNftAccount;
+    private batchFetchReceivedAtTimestamps;
+    private getAllDcdtsForAddressFromGatewayRaw;
+    private pendingRequestsDictionary;
+    getAllDcdtsForAddressFromGateway(address: string): Promise<{
+        [key: string]: any;
+    }>;
+    private filterDcdtsForAddressFromGateway;
+}

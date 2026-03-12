@@ -1,0 +1,32 @@
+import { TokenAssets } from "src/common/assets/entities/token.assets";
+import { NftType } from "../../nfts/entities/nft.type";
+import { ScamInfo } from "src/common/entities/scam-info.dto";
+import { CollectionTrait } from "./collection.trait";
+import { CollectionAuctionStats } from "src/endpoints/marketplace/entities/collection.auction.stats";
+import { NftSubType } from "src/endpoints/nfts/entities/nft.sub.type";
+export declare class NftCollection {
+    constructor(init?: Partial<NftCollection>);
+    collection: string;
+    type: NftType;
+    subType: NftSubType | undefined;
+    name: string;
+    ticker: string;
+    owner: string | undefined;
+    timestamp: number;
+    timestampMs?: number;
+    canFreeze: boolean;
+    canWipe: boolean;
+    canPause: boolean;
+    canTransferNftCreateRole: boolean;
+    canChangeOwner: boolean;
+    canUpgrade: boolean;
+    canAddSpecialRoles: boolean;
+    decimals: number | undefined;
+    assets: TokenAssets | undefined;
+    scamInfo: ScamInfo | undefined;
+    traits: CollectionTrait[];
+    auctionStats: CollectionAuctionStats | undefined;
+    isVerified: boolean | undefined;
+    holderCount: number | undefined;
+    nftCount: number | undefined;
+}
