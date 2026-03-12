@@ -1,0 +1,30 @@
+import { DcdtType } from "../../dcdt/entities/dcdt.type";
+import { DcdtSubType } from "src/endpoints/dcdt/entities/dcdt.sub.type";
+import { TokenOwnersHistory } from "./token.owner.history";
+export declare class TokenProperties {
+    constructor(init?: Partial<TokenProperties>);
+    identifier: string;
+    name: string;
+    type: DcdtType;
+    subType: DcdtSubType | undefined;
+    owner: string;
+    wiped: string;
+    decimals: number;
+    isPaused: boolean;
+    tags: string[];
+    royalties: number;
+    uris: string[];
+    url: string;
+    canUpgrade: boolean;
+    canMint: boolean;
+    canBurn: boolean;
+    canChangeOwner: boolean;
+    canPause: boolean;
+    canFreeze: boolean;
+    canWipe: boolean;
+    canAddSpecialRoles: boolean;
+    canTransferNFTCreateRole: boolean;
+    NFTCreateStopped: boolean;
+    timestamp: number;
+    ownersHistory: TokenOwnersHistory[];
+}

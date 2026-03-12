@@ -1,0 +1,37 @@
+import { NftType } from "src/endpoints/nfts/entities/nft.type";
+declare const nftCollection: {
+    identifier: string;
+    collection: string;
+    timestamp: number;
+    attributes: string;
+    nonce: number;
+    type: NftType;
+    name: string;
+    creator: string;
+    royalties: number;
+    uris: string[];
+    url: string;
+    media: {
+        url: string;
+        originalUrl: string;
+        thumbnailUrl: string;
+        fileType: string;
+        fileSize: number;
+    }[];
+    isWhitelistedStorage: boolean;
+    thumbnailUrl: string;
+    tags: string[];
+    metadata: undefined;
+    owner: string;
+    balance: undefined;
+    supply: string;
+    decimals: undefined;
+    ticker: string;
+    scamInfo: undefined;
+    assets: undefined;
+    score: undefined;
+    isNsfw: undefined;
+    rank: undefined;
+    rarities: undefined;
+}[];
+export default nftCollection;

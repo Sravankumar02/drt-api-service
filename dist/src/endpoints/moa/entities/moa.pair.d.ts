@@ -1,0 +1,31 @@
+import { MoaPairState } from "./moa.pair.state";
+import { MoaPairType } from "./moa.pair.type";
+import { MoaPairExchange } from "./moa.pair.exchange";
+export declare class MoaPair {
+    constructor(init?: Partial<MoaPair>);
+    address: string;
+    id: string;
+    symbol: string;
+    name: string;
+    price: number;
+    basePrevious24hPrice: number;
+    quotePrevious24hPrice: number;
+    baseId: string;
+    baseSymbol: string;
+    baseName: string;
+    basePrice: number;
+    quoteId: string;
+    quoteSymbol: string;
+    quoteName: string;
+    quotePrice: number;
+    totalValue: number;
+    volume24h: number | undefined;
+    state: MoaPairState;
+    type: MoaPairType;
+    exchange: MoaPairExchange | undefined;
+    tradesCount: number | undefined;
+    tradesCount24h: number | undefined;
+    deployedAt: number | undefined;
+    hasFarms?: boolean;
+    hasDualFarms?: boolean;
+}

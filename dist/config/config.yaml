@@ -1,0 +1,206 @@
+network: 'devnet'
+metaChainShardId: 4294967295
+api:
+  public: true
+  publicPort: 3001
+  private: true
+  privatePort: 4001
+  websocket: true
+cron:
+  cacheWarmer: true
+  fastWarm: false
+  queueWorker: true
+  elasticUpdater: false
+flags:
+  useRequestCaching: true
+  useKeepAliveAgent: true
+  useTracing: false
+  useRequestLogging: false
+  useVmQueryTracing: false
+  processNfts: true
+  collectionPropertiesFromGateway: false
+features:
+  websocketSubscription:
+    enabled: false
+    port: 6002
+    maxSubscriptionsPerInstance: 10000
+    maxSubscriptionsPerClient: 10
+    broadcastIntervalMs: 6000
+  eventsNotifier:
+    enabled: false
+    port: 5674
+    url: 'amqp://guest:guest@127.0.0.1:5673'
+    exchange: 'all_events'
+    queue: 'api-process-logs-and-events'
+  guestCaching:
+    enabled: false
+    hitsThreshold: 100
+    ttl: 12
+  transactionPool:
+    enabled: false
+  transactionPoolWarmer:
+    enabled: false
+    cronExpression: '*/5 * * * * *'
+    ttlInSeconds: 60
+  updateCollectionExtraDetails:
+    enabled: false
+  updateAccountExtraDetails:
+    enabled: false
+  marketplace:
+    enabled: false
+    serviceUrl: 'https://devnet-nfts-graph.dharitri.org/graphql'
+  exchange:
+    enabled: false
+    serviceUrl: 'https://devnet-graph.dharitrix.com/graphql'
+  dataApi:
+    enabled: false
+    serviceUrl: 'https://devnet-data-api.dharitri.org'
+  assetsFetch:
+    enabled: true
+    assetsUrl: 'https://tools.dharitri.org/assets-cdn'
+  auth:
+    enabled: false
+    maxExpirySeconds: 86400
+    acceptedOrigins:
+      - ''
+    admins:
+      - ''
+    jwtSecret: ''
+  stakingV4:
+    enabled: true
+    cronExpression: '*/5 * * * * *'
+    activationEpoch: 1043
+  chainAndromeda:
+    enabled: true
+    activationEpoch: 4
+  stakingV5:
+    enabled: true
+    activationEpoch: 4817
+  chainBarnard:
+    enabled: true
+    activationEpoch: 3964
+    activationTimestamp: 1751460236
+  deprecatedRelayedV1V2:
+    enabled: true
+    activationEpoch: 4569
+  nodeEpochsLeft:
+    enabled: false
+  transactionProcessor:
+    enabled: false
+    maxLookBehind: 100
+  transactionCompleted:
+    enabled: false
+    maxLookBehind: 100
+    logLevel: 'Error'
+  transactionBatch:
+    enabled: true
+    maxLookBehind: 100
+  elasticCircuitBreaker:
+    enabled: false
+    durationThresholdMs: 5000
+    failureCountThreshold: 5
+    resetTimeoutMs: 30000
+  elasticMigratedIndices:
+    logs: 'events'
+  statusChecker:
+    enabled: false
+    thresholds:
+      tokens: 500
+      nodes: 3000
+      providers: 10
+      tokenSupplyCount: 20
+      tokenAssets: 20
+      tokenAccounts: 500
+      tokenTransactions: 500
+      nodeValidators: 300
+  nftScamInfo:
+    enabled: false
+  processNfts:
+    enabled: false
+    nftQueueName: 'api-process-nfts'
+    deadLetterQueueName: 'api-process-nfts-dlq'
+  tps:
+    enabled: false
+    maxLookBehindNonces: 100
+  nodesFetch:
+    enabled: false
+    serviceUrl: 'https://devnet-api.dharitri.org'
+  tokensFetch:
+    enabled: false
+    serviceUrl: 'https://devnet-api.dharitri.org'
+  providersFetch:
+    enabled: false
+    serviceUrl: 'https://devnet-api.dharitri.org'
+image:
+  width: 600
+  height: 600
+  type: 'png'
+aws:
+  s3KeyId: ''
+  s3Secret: ''
+  s3Bucket: 'devnet-media.numbat.com'
+  s3Region: ''
+  s3Endpoint: ''
+urls:
+  self: 'https://devnet-api.dharitri.org'
+  elastic:
+    - 'https://devnet-index.dharitri.org'
+  gateway:
+    - 'https://devnet-gateway.dharitri.org'
+  verifier: 'https://play-api.dharitri.org'
+  redis: '127.0.0.1'
+  rabbitmq: 'amqp://127.0.0.1:5672'
+  providers: 'https://devnet-delegation-api.dharitri.org/providers'
+  delegation: 'https://devnet-delegation-api.dharitri.org'
+  media: 'https://devnet-media.numbat.com'
+  tmp: '/tmp'
+  ipfs: 'https://ipfs.io/ipfs'
+  socket: 'devnet-socket-api.dharitri.org'
+  durianId: 'https://devnet-id-api.dharitri.org'
+indexer:
+  type: 'elastic'
+  maxPagination: 10000
+database:
+  enabled: false
+  url: 'mongodb://127.0.0.1:27017/api?authSource=admin'
+  type: 'mysql'
+  host: 'localhost'
+  port: 3306
+  username: 'root'
+  password: 'root'
+  database: 'api'
+caching:
+  cacheTtl: 6
+  processTtl: 600
+  poolLimit: 50
+  cacheDuration: 3
+keepAliveTimeout:
+  downstream: 61000
+  upstream: 60000
+contracts:
+  dcdt: 'drt1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls6prdez'
+  auction: 'drt1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqplllskzf8kp'
+  staking: 'drt1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqlllsjr0pnq'
+  delegationManager: 'drt1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqylllsz8he8y'
+  delegation: 'drt1qqqqqqqqqqqqqpgq97wezxw6l7lgg7k9rxvycrz66vn92ksh2tssmj7a6l'
+  metabonding: 'drt1qqqqqqqqqqqqqpgqkg7we73j769ew5we4yyx7uyvnn0nefqgd8ssxxm3m5'
+inflation:
+  - 1952123
+  - 1746637
+  - 1541150
+  - 1335663
+  - 1130177
+  - 924690
+  - 719203
+stakingV5Inflation:
+  - 1069805
+# november 2025 devnet supply: 24_433_152. first year rewards = 50% * (8.757% * supply) = 1_069_805
+# TODO: calculate the inflation for upcoming years based on the inflation decay
+nftProcess:
+  parallelism: 1
+  maxRetries: 3
+compression:
+  enabled: true
+  level: 6
+  threshold: 1024
+  chunkSize: 16384

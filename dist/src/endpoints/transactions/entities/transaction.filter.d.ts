@@ -1,0 +1,33 @@
+import { QueryConditionOptions } from "@sravankumar02/sdk-nestjs-elastic";
+import { SortOrder } from "src/common/entities/sort.order";
+import { TransactionStatus } from "./transaction.status";
+import { TransactionType } from "./transaction.type";
+export declare class TransactionFilter {
+    address?: string;
+    sender?: string;
+    senders?: string[];
+    receivers?: string[];
+    token?: string;
+    functions?: string[];
+    senderShard?: number;
+    receiverShard?: number;
+    miniBlockHash?: string;
+    hashes?: string[];
+    status?: TransactionStatus;
+    before?: number;
+    after?: number;
+    condition?: QueryConditionOptions;
+    order?: SortOrder;
+    type?: TransactionType;
+    tokens?: string[];
+    senderOrReceiver?: string;
+    isScCall?: boolean;
+    isRelayed?: boolean;
+    relayer?: string;
+    round?: number;
+    withRefunds?: boolean;
+    withRelayedScresults?: boolean;
+    withTxsRelayedByAddress?: boolean;
+    constructor(init?: Partial<TransactionFilter>);
+    static validate(filter: TransactionFilter, size: number): void;
+}

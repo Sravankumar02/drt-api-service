@@ -1,0 +1,31 @@
+export declare class FeatureConfigs {
+    constructor(init?: Partial<FeatureConfigs>);
+    eventsNotifier: boolean;
+    guestCaching: boolean;
+    transactionPool: boolean;
+    transactionPoolWarmer: boolean;
+    updateCollectionExtraDetails: boolean;
+    updateAccountsExtraDetails: boolean;
+    marketplace: boolean;
+    exchange: boolean;
+    dataApi: boolean;
+    auth: boolean;
+    stakingV4: boolean;
+    chainAndromeda: boolean;
+    stakingV5: boolean;
+    stakingV5ActivationEpoch: number;
+    nodeEpochsLeft: boolean;
+    transactionProcessor: boolean;
+    transactionCompleted: boolean;
+    transactionBatch: boolean;
+    deepHistory: boolean;
+    elasticCircuitBreaker: boolean;
+    statusChecker: boolean;
+    nftScamInfo: boolean;
+    processNfts: boolean;
+    tps: boolean;
+    nodesFetch: boolean;
+    tokensFetch: boolean;
+    providersFetch: boolean;
+    assetsFetch: boolean;
+}
